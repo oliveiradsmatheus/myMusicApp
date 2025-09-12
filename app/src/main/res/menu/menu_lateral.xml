@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/it_nmusica"
+        android:title="Nova Música" />
+    <item
+        android:id="@+id/it_lmusicas"
+        android:title="Listar Músicas" />
+    <item
+        android:id="@+id/it_lgeneros"
+        android:title="Listar Gêneros" />
+    <item
+        android:id="@+id/it_fechar"
+        android:title="Fechar" />
+</menu>
