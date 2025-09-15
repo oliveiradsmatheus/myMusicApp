@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cadastrarMusicas(Musica musica) {
+        novaMusicaFragment.musica=musica;
         // Caso música seja null, suponha a inserção de uma nova.
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(frame_layout.getId(), novaMusicaFragment);
