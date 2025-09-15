@@ -7,8 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.List;
 
 import matheus.bcc.mymusicapp.R;
+import matheus.bcc.mymusicapp.db.bean.Genero;
+import matheus.bcc.mymusicapp.db.dal.GeneroDAL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +22,7 @@ import matheus.bcc.mymusicapp.R;
  * create an instance of this fragment.
  */
 public class MusicasFragment extends Fragment {
-
+    private ListView lv_musicas;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,9 +64,18 @@ public class MusicasFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_musicas, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_musicas, container, false);
+
+        lv_musicas = view.findViewById(R.id.lv_musicas);
+        
+        carregarMusicas(view);
+        return view;
+    }
+
+    private void carregarMusicas(View view) {
+        GeneroDAL dal = new GeneroDAL(view.getContext());
+        List<Genero> generoList =  dal.get("");
+        lv_musicas.setAdapter(new ArrayAdapter<Genero>(view.getContext(), android.R.layout.simple_list_item_1, generoList));
     }
 }

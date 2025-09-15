@@ -18,6 +18,7 @@ import java.util.List;
 
 import matheus.bcc.mymusicapp.MainActivity;
 import matheus.bcc.mymusicapp.R;
+import matheus.bcc.mymusicapp.adapters.GeneroAdapter;
 import matheus.bcc.mymusicapp.db.bean.Genero;
 import matheus.bcc.mymusicapp.db.dal.GeneroDAL;
 
@@ -119,6 +120,6 @@ public class GenerosFragment extends Fragment {
     private void carregarGeneros(View view) {
         GeneroDAL dal = new GeneroDAL(view.getContext());
         List<Genero> generoList =  dal.get("");
-        lv_generos.setAdapter(new ArrayAdapter<Genero>(view.getContext(), android.R.layout.simple_list_item_1, generoList));
+        lv_generos.setAdapter(new GeneroAdapter(view.getContext(), R.layout.genero_item_layout, generoList));
     }
 }

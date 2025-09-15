@@ -21,8 +21,7 @@ public class MusicaDAL {
         try {
             con.conectar();
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
@@ -36,6 +35,7 @@ public class MusicaDAL {
         dados.put("mus_duracao",o.getDuracao());
         return con.inserir(TABLE,dados)>0;
     }
+
     public boolean alterar(Musica o) {
         ContentValues dados=new ContentValues();
         dados.put("mus_id",o.getId());
@@ -46,24 +46,25 @@ public class MusicaDAL {
         dados.put("mus_duracao",o.getDuracao());
         return con.alterar(TABLE,dados,"mus_id="+o.getId())>0;
     }
+
     public boolean apagar(long chave) {
-        return con.apagar(TABLE,"mus_id="+chave)>0;
+        return con.apagar(TABLE,"mus_id = " + chave) > 0;
     }
 
     public Musica get(int id) {
         GeneroDAL gdal=new GeneroDAL(context);
         Musica o = null;
-        Cursor cursor=con.consultar("select * from "+TABLE+" where mus_id="+id);
+        Cursor cursor=con.consultar("select * from " + TABLE + " where mus_id=" + id);
         if(cursor.moveToFirst())
-            o=new Musica(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),gdal.get(cursor.getInt(4)),cursor.getDouble(5));
-        cursor.close();;
+            o = new Musica(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),gdal.get(cursor.getInt(4)),cursor.getDouble(5));
+        cursor.close();
         return o;
     }
     public ArrayList <Musica> get(String filtro) {
         GeneroDAL gdal=new GeneroDAL(context);
-        ArrayList <Musica> objs = new ArrayList();
+        ArrayList <Musica> objs = new ArrayList<>();
         String sql="select * from "+TABLE;
-        if (!filtro.equals(""))
+        if (!filtro.isEmpty())
             sql+=" where "+filtro;
 
         Cursor cursor=con.consultar(sql);
@@ -74,7 +75,7 @@ public class MusicaDAL {
                         gdal.get(cursor.getInt(4)), cursor.getDouble(5)));
                 cursor.moveToNext();
             }
-        cursor.close();;
+        cursor.close();
         return objs;
     }
 }

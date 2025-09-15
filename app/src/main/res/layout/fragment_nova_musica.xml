@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EF9A9A"
-    tools:context=".fragments.NovaMusicaFragment" >
+    android:background="@color/fundo_card"
+    tools:context=".fragments.NovaMusicaFragment">
 
     <TextView
         android:id="@+id/textView2"

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="branco">#FF000000</color>
+    <color name="preto">#FFFFFFFF</color>
+
+    <color name="laranja">#FFCCBC</color>
+    <color name="laranja_claro">#FFF8F5</color>
+
+    <color name="fundo">#003049</color>
+    <color name="fundo_card">#EBEBEB</color>
+
+    <color name="botao">#D1495B</color>
+    <color name="verde">#1F7A8C</color>
+
+    <color name="texto">#003049</color>
+    <color name="texto_claro">#EBEBEB</color>
 </resources>

@@ -21,6 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import matheus.bcc.mymusicapp.db.bean.Musica;
 import matheus.bcc.mymusicapp.fragments.GenerosFragment;
+import matheus.bcc.mymusicapp.fragments.MusicasFragment;
 import matheus.bcc.mymusicapp.fragments.NovaMusicaFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private GenerosFragment generosFragment = new GenerosFragment();
+    private MusicasFragment musicasFragment = new MusicasFragment();
     private NovaMusicaFragment novaMusicaFragment = new NovaMusicaFragment();
 
     @Override
@@ -58,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
             if (item.getItemId() == R.id.it_nmusica) {
                 cadastrarMusicas(null);
             } else if (item.getItemId() == R.id.it_lmusicas) {
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(frame_layout.getId(), musicasFragment);
+                fragmentTransaction.commit();
             } else if (item.getItemId() == R.id.it_lgeneros) {
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(frame_layout.getId(), generosFragment);
