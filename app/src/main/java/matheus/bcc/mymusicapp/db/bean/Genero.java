@@ -1,5 +1,7 @@
 package matheus.bcc.mymusicapp.db.bean;
 
+import androidx.annotation.NonNull;
+
 public class Genero {
     private int id;
     private String nome;
@@ -33,8 +35,9 @@ public class Genero {
         this.nome = nome;
     }
 
+    @NonNull
     @Override
     public String toString() {
-        return nome+"("+id+")";
+        return nome + "(" + id + ")";
     }
 }

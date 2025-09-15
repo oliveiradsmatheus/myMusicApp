@@ -5,11 +5,12 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="46dp">
 
         <FrameLayout
             android:id="@+id/frame_layout"
@@ -28,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:layout_marginTop="46dp"
         app:headerLayout="@layout/header_menu"
         app:menu="@menu/menu_lateral"
         tools:ignore="VisualLintBounds" />

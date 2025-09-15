@@ -1,7 +1,8 @@
 package matheus.bcc.mymusicapp.db.bean;
 
-public class Musica {
+import androidx.annotation.NonNull;
 
+public class Musica {
     private int id, ano;
     private String titulo, interprete;
     private Genero genero;
@@ -22,7 +23,6 @@ public class Musica {
         this.interprete = interprete;
         this.genero = genero;
         this.duracao = duracao;
-
     }
 
     public int getId() {
@@ -73,10 +73,9 @@ public class Musica {
         this.duracao = duracao;
     }
 
+    @NonNull
     @Override
     public String toString() {
-        return  titulo+" ("+genero.getNome()+")";
+        return  titulo + " (" + genero.getNome() + ")";
     }
-
-
 }
