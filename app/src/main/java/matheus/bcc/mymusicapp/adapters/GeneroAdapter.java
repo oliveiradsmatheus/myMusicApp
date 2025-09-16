@@ -41,4 +41,5 @@ public class GeneroAdapter extends ArrayAdapter<Genero> {
 
 
         return convertView;
-    }}
+    }
+}

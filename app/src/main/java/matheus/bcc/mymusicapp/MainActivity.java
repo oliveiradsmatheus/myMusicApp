@@ -50,11 +50,15 @@ public class MainActivity extends AppCompatActivity {
         drawer_layout = findViewById(R.id.drawerLayout);
         navigation_view = findViewById(R.id.navigationView);
         frame_layout = findViewById(R.id.frame_layout);
+
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer_layout, R.string.open_menu, R.string.close_menu);
         drawer_layout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         fragmentManager = getSupportFragmentManager();
+
         // Opções para os itens do menu lateral
         navigation_view.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.it_nmusica) {
@@ -82,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cadastrarMusicas(Musica musica) {
-        novaMusicaFragment.musica=musica;
+        novaMusicaFragment.musica = musica;
         // Caso música seja null, suponha a inserção de uma nova.
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(frame_layout.getId(), novaMusicaFragment);

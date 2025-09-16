@@ -1,9 +1,7 @@
 package matheus.bcc.mymusicapp.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
@@ -68,6 +69,7 @@ public class NovaMusicaFragment extends Fragment {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -94,17 +96,21 @@ public class NovaMusicaFragment extends Fragment {
 
                     int ano = Integer.parseInt(etnAno.getText().toString().trim());
                     double duracao = Double.parseDouble(etnDuracao.getText().toString().trim());
-
                     Genero genero = (Genero) sp_generos.getSelectedItem();
-
                     Musica musica = new Musica(ano, titulo, interprete, genero, duracao);
 
                     if (NovaMusicaFragment.musica != null) {
-                        if (musicaDAL.alterar(musica))
+                        if (musicaDAL.alterar(musica)) {
+                            Snackbar snackbar = Snackbar.make(view, "Música alterada com sucesso!", Snackbar.LENGTH_SHORT);
+                            snackbar.show();
                             NovaMusicaFragment.musica = null;
+                        }
                     } else {
-                        if (musicaDAL.salvar(musica))
+                        if (musicaDAL.salvar(musica)) {
+                            Snackbar snackbar = Snackbar.make(view, "Música salva com sucesso!", Snackbar.LENGTH_SHORT);
+                            snackbar.show();
                             NovaMusicaFragment.musica = null;
+                        }
                     }
 
                 } catch (NumberFormatException e) {
@@ -121,6 +127,7 @@ public class NovaMusicaFragment extends Fragment {
     private void carregarGeneros(View view) {
         GeneroDAL dal = new GeneroDAL(view.getContext());
         List<Genero> generoList =  dal.get("");
+
         ArrayAdapter<Genero> adapter = new ArrayAdapter<>(
                 view.getContext(),
                 android.R.layout.simple_spinner_item,

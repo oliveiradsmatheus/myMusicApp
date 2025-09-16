@@ -1,72 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.NovaMusicaFragment" >
+    tools:context=".fragments.NovaMusicaFragment">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/etnAno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:ems="10"
-            android:hint="Ano"
-            android:inputType="number" />
-
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:hint="Interprete">
+            android:layout_height="534dp"
+            android:background="@color/rosa_claro"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiInterprete"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="40dp"
+                android:hint="Título"
+                android:textColorHint="@color/texto">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300dp"
-            android:layout_height="66dp"
-            android:layout_marginBottom="40dp"
-            android:hint="Titulo">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:outlineAmbientShadowColor="@color/texto"
+                    android:outlineSpotShadowColor="@color/texto"
+                    android:shadowColor="@color/texto"
+                    android:textColor="@color/texto"
+                    android:textColorHighlight="@color/texto"
+                    android:textColorHint="@color/texto"
+                    android:textColorLink="@color/texto" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiTitulo"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:hint="Intérprete"
+                android:textColorHint="@color/texto">
 
-        <Spinner
-            android:id="@+id/sp_generos"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiInterprete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/texto"
+                    android:textColorHint="@color/texto"
+                    android:textColorLink="@color/texto" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/etnDuracao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:ems="10"
-            android:hint="informe a duração"
-            android:inputType="numberDecimal" />
+            <Spinner
+                android:id="@+id/sp_generos"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp" />
 
-        <Button
-            android:id="@+id/btConfirma"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/etnAno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:ems="10"
+                android:hint="Ano"
+                android:inputType="number"
+                android:textColor="@color/texto"
+                android:textColorHint="@color/texto"
+                android:textColorLink="@color/texto" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/etnDuracao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:ems="10"
+                android:hint="Duração"
+                android:inputType="numberDecimal"
+                android:textColor="@color/texto"
+                android:textColorHint="@color/texto"
+                android:textColorLink="@color/texto" />
 
-</FrameLayout>
+            <Button
+                android:id="@+id/btConfirma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/rosa_claro"
+                android:textColorLink="@color/rosa" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
