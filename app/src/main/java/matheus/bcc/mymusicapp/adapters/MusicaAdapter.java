@@ -1,5 +1,6 @@
 package matheus.bcc.mymusicapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ public class MusicaAdapter extends ArrayAdapter<Musica> {
         this.resource = resource;
     }
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -44,10 +46,12 @@ public class MusicaAdapter extends ArrayAdapter<Musica> {
         if (musica != null) {
             tv_titulo.setText(musica.getTitulo());
             tv_interprete.setText(musica.getInterprete());
-            tv_genero.setText((CharSequence) musica.getGenero());
-            tv_duracao.setText((int) musica.getDuracao());
-            tv_ano.setText(musica.getAno());
+            tv_ano.setText("" + musica.getAno());
+            tv_genero.setText(musica.getGenero().getNome());
+            int duracao = (int) musica.getDuracao();
+            tv_duracao.setText(duracao + ":" + (int) Math.round((musica.getDuracao() - duracao) * 100));
         }
 
         return convertView;
-    }}
+    }
+}

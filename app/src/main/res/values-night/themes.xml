@@ -1,4 +1,4 @@
 <resources>
-    <style name="Base.Theme.AloDrawerMenu" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.MyMusicApp" parent="Theme.Material3.Light">
     </style>
 </resources>
