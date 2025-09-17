@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -75,19 +76,23 @@ public class NovaMusicaFragment extends Fragment {
                     int ano = Integer.parseInt(etnAno.getText().toString().trim());
                     double duracao = Double.parseDouble(etnDuracao.getText().toString().trim());
                     Genero genero = (Genero) sp_generos.getSelectedItem();
-                    Musica musica = new Musica(ano, titulo, interprete, genero, duracao);
+
+                    Musica nova = new Musica(ano, titulo, interprete, genero, duracao);
 
                     if (NovaMusicaFragment.musica != null) {
-                        if (musicaDAL.alterar(musica)) {
+                        nova.setId(musica.getId());
+                        if (musicaDAL.alterar(nova)) {
                             Snackbar snackbar = Snackbar.make(view, "Música alterada com sucesso!", Snackbar.LENGTH_SHORT);
                             snackbar.show();
                             NovaMusicaFragment.musica = null;
+                            addValores();
                         }
                     } else {
-                        if (musicaDAL.salvar(musica)) {
+                        if (musicaDAL.salvar(nova)) {
                             Snackbar snackbar = Snackbar.make(view, "Música salva com sucesso!", Snackbar.LENGTH_SHORT);
                             snackbar.show();
                             NovaMusicaFragment.musica = null;
+                            addValores();
                         }
                     }
 
@@ -98,7 +103,31 @@ public class NovaMusicaFragment extends Fragment {
         });
 
         carregarGeneros(view);
+        addValores();
         return view;
+    }
+
+    private void addValores() {
+        if(musica!=null){
+            tiTitulo.setText(musica.getTitulo());
+            tiInterprete.setText(musica.getInterprete());
+            etnAno.setText(""+musica.getAno());
+            etnDuracao.setText(""+musica.getDuracao());
+            ArrayAdapter<Genero> adapter = (ArrayAdapter<Genero>) sp_generos.getAdapter();
+
+            int i;
+            for ( i = 0; i < adapter.getCount()  && adapter.getItem(i).getId() != musica.getGenero().getId(); i++);
+
+            if (i < adapter.getCount()) {
+                sp_generos.setSelection(i);
+            }
+        }
+        else{
+            tiTitulo.setText("");
+            tiInterprete.setText("");
+            etnAno.setText("");
+            etnDuracao.setText("");
+        }
     }
 
     private void carregarGeneros(View view) {
@@ -109,4 +138,6 @@ public class NovaMusicaFragment extends Fragment {
         adapter.setDropDownViewResource(R.layout.genero_item_layout);
         sp_generos.setAdapter(adapter);
     }
+
+
 }

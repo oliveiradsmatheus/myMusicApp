@@ -70,10 +70,6 @@ public class GenerosFragment extends Fragment {
                     .show();
             return true;
         });
-        lv_generos.setOnItemClickListener((parent, view2, position, id) -> {
-            //mainActivity.cadastrarMusicas((Genero) adapterView.getItemAtPosition(position));
-            mainActivity.cadastrarMusicas(null);
-        });
         carregarGeneros(view);
         return view;
     }
