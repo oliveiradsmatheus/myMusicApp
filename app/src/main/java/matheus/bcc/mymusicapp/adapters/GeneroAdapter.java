@@ -38,7 +38,24 @@ public class GeneroAdapter extends ArrayAdapter<Genero> {
         if (genero != null)
             tv_genero.setText(genero.getNome());
 
+        return convertView;
+    }
 
+    @Override
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        return createItemView(position, convertView, parent);
+    }
+
+    private View createItemView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(this.resource, parent, false);
+        }
+
+        Genero genero = getItem(position);
+        TextView tv_genero = convertView.findViewById(R.id.tv_genero);
+        if (genero != null)
+            tv_genero.setText(genero.getNome());
 
         return convertView;
     }

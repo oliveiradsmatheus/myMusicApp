@@ -18,6 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.List;
 
 import matheus.bcc.mymusicapp.R;
+import matheus.bcc.mymusicapp.adapters.GeneroAdapter;
 import matheus.bcc.mymusicapp.db.bean.Genero;
 import matheus.bcc.mymusicapp.db.bean.Musica;
 import matheus.bcc.mymusicapp.db.dal.GeneroDAL;
@@ -128,12 +129,18 @@ public class NovaMusicaFragment extends Fragment {
         GeneroDAL dal = new GeneroDAL(view.getContext());
         List<Genero> generoList =  dal.get("");
 
+        GeneroAdapter adapter = new GeneroAdapter(requireContext(), R.layout.genero_item_layout, generoList);
+        adapter.setDropDownViewResource(R.layout.genero_item_layout);
+        sp_generos.setAdapter(adapter);
+        /*GeneroDAL dal = new GeneroDAL(view.getContext());
+        List<Genero> generoList =  dal.get("");
+
         ArrayAdapter<Genero> adapter = new ArrayAdapter<>(
                 view.getContext(),
                 android.R.layout.simple_spinner_item,
                 generoList
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_generos.setAdapter(adapter);
+        sp_generos.setAdapter(adapter);*/
     }
 }
