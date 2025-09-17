@@ -109,7 +109,6 @@ public class NovaMusicaFragment extends Fragment {
 
     private void addValores() {
         ArrayAdapter<Genero> adapter = (ArrayAdapter<Genero>) sp_generos.getAdapter();
-        if (adapter == null) return; // segurança extra
 
         if (musica != null) {
             tiTitulo.setText(musica.getTitulo());

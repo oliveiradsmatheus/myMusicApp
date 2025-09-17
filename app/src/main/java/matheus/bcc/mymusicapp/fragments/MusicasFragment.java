@@ -20,7 +20,6 @@ import matheus.bcc.mymusicapp.MainActivity;
 import matheus.bcc.mymusicapp.R;
 import matheus.bcc.mymusicapp.adapters.MusicaAdapter;
 import matheus.bcc.mymusicapp.db.bean.Musica;
-import matheus.bcc.mymusicapp.db.dal.GeneroDAL;
 import matheus.bcc.mymusicapp.db.dal.MusicaDAL;
 
 public class MusicasFragment extends Fragment {

@@ -49,7 +49,8 @@ public class MusicaAdapter extends ArrayAdapter<Musica> {
             tv_ano.setText("" + musica.getAno());
             tv_genero.setText(musica.getGenero().getNome());
             int duracao = (int) musica.getDuracao();
-            tv_duracao.setText(duracao + ":" + (int) Math.round((musica.getDuracao() - duracao) * 100));
+            int minutos = (int) Math.round((musica.getDuracao() - duracao) * 100);
+            tv_duracao.setText(duracao + ":" + (minutos > 9 ? minutos : "0" + minutos));
         }
 
         return convertView;
