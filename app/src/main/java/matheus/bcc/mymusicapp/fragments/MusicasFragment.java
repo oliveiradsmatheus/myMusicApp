@@ -86,4 +86,6 @@ public class MusicasFragment extends Fragment {
         List<Musica> musicaList =  dal.get("");
         lv_musicas.setAdapter(new MusicaAdapter(view.getContext(), R.layout.musica_item_layout, musicaList));
     }
+
+
 }
