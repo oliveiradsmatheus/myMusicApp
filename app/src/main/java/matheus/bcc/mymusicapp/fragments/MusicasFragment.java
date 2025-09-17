@@ -63,7 +63,7 @@ public class MusicasFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Musica musica = (Musica) parent.getItemAtPosition(position);
-                new MaterialAlertDialogBuilder(getContext())
+                new MaterialAlertDialogBuilder(getContext() , R.style.AlertaCustomizado)
                         .setTitle("Confirmar Exclusão")
                         .setMessage("Tem certeza que deseja apagar a musica '" + musica.getTitulo() + "'?")
                         .setPositiveButton("Sim", (dialog, which) -> {

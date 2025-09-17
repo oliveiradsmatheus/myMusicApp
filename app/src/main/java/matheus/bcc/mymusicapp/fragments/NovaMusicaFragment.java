@@ -138,6 +138,4 @@ public class NovaMusicaFragment extends Fragment {
         adapter.setDropDownViewResource(R.layout.genero_item_layout);
         sp_generos.setAdapter(adapter);
     }
-
-
 }

@@ -57,7 +57,7 @@ public class GenerosFragment extends Fragment {
         lv_generos.setOnItemLongClickListener((adapterView, view1, i, l) -> {
             Genero genero = (Genero) adapterView.getItemAtPosition(i);
 
-            new MaterialAlertDialogBuilder(getContext())
+            new MaterialAlertDialogBuilder(getContext(), R.style.AlertaCustomizado)
                     .setTitle("Confirmar Exclusão")
                     .setMessage("Tem certeza que deseja apagar o gênero '" + genero.getNome() + "'?")
                     .setPositiveButton("Sim", (dialog, which) -> {
