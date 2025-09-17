@@ -1,4 +1,10 @@
 <resources>
     <style name="Base.Theme.MyMusicApp" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/rosa</item>
+        <item name="android:colorBackground">@color/fundo</item>
+        <item name="titleTextColor">@color/texto</item>
+        <item name="android:textColorPrimary">@color/texto</item>
+
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

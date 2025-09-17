@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,26 +17,13 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.List;
 
 import matheus.bcc.mymusicapp.R;
+import matheus.bcc.mymusicapp.adapters.GeneroAdapter;
 import matheus.bcc.mymusicapp.db.bean.Genero;
 import matheus.bcc.mymusicapp.db.bean.Musica;
 import matheus.bcc.mymusicapp.db.dal.GeneroDAL;
 import matheus.bcc.mymusicapp.db.dal.MusicaDAL;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NovaMusicaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class NovaMusicaFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private Button btConfirma;
     public static Musica musica=null;
     private EditText etnDuracao;
@@ -49,13 +35,11 @@ public class NovaMusicaFragment extends Fragment {
     private MusicaDAL musicaDAL;
 
     public NovaMusicaFragment() {
-        // Required empty public constructor
+        // Requer construtor público vazio
     }
     public static NovaMusicaFragment newInstance(String param1, String param2) {
         NovaMusicaFragment fragment = new NovaMusicaFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,17 +47,11 @@ public class NovaMusicaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_nova_musica, container, false);
         sp_generos = view.findViewById(R.id.sp_generos);
         btConfirma= view.findViewById(R.id.btConfirma);
@@ -119,7 +97,6 @@ public class NovaMusicaFragment extends Fragment {
             }
         });
 
-
         carregarGeneros(view);
         return view;
     }
@@ -128,12 +105,8 @@ public class NovaMusicaFragment extends Fragment {
         GeneroDAL dal = new GeneroDAL(view.getContext());
         List<Genero> generoList =  dal.get("");
 
-        ArrayAdapter<Genero> adapter = new ArrayAdapter<>(
-                view.getContext(),
-                android.R.layout.simple_spinner_item,
-                generoList
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        GeneroAdapter adapter = new GeneroAdapter(requireContext(), R.layout.genero_item_layout, generoList);
+        adapter.setDropDownViewResource(R.layout.genero_item_layout);
         sp_generos.setAdapter(adapter);
     }
 }
