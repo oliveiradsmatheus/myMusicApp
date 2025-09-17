@@ -5,4 +5,14 @@
     <string name="close_menu">Fechar</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titulo">Título</string>
+    <string name="interprete">Intérprete</string>
+    <string name="ano">Ano</string>
+    <string name="duracao">Duração</string>
+    <string name="titulo_espaco">"Título: "</string>
+    <string name="interprete_espaco">"Intérprete: "</string>
+    <string name="genero_espaco">"Gênero: "</string>
+    <string name="duracao_espaco">"Duração: "</string>
+    <string name="ano_espaco">"Ano: "</string>
+    <string name="menu">Menu</string>
 </resources>

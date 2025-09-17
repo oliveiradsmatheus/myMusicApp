@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".fragments.NovaMusicaFragment">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -19,7 +19,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="600dp"
-            android:background="@color/rosa_claro"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="20dp">
@@ -28,76 +27,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
-                android:hint="Título"
-                android:textColorHint="@color/texto">
+                android:hint="@string/titulo"
+                app:boxStrokeColor="@color/input_selector"
+                app:hintTextColor="@color/input_selector">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiTitulo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:outlineAmbientShadowColor="@color/texto"
-                    android:outlineSpotShadowColor="@color/texto"
-                    android:shadowColor="@color/texto"
-                    android:textColor="@color/texto"
-                    android:textColorHighlight="@color/texto"
-                    android:textColorHint="@color/texto"
-                    android:textColorLink="@color/texto" />
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
-                android:hint="Intérprete"
-                android:textColorHint="@color/texto">
+                android:hint="@string/interprete"
+                app:boxStrokeColor="@color/input_selector"
+                app:hintTextColor="@color/input_selector">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiInterprete"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/texto"
-                    android:textColorHint="@color/texto"
-                    android:textColorLink="@color/texto" />
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner
                 android:id="@+id/sp_generos"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp" />
+                android:layout_marginBottom="40dp"/>
 
             <EditText
                 android:id="@+id/etnAno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
+                android:autofillHints=""
                 android:ems="10"
-                android:hint="Ano"
-                android:inputType="number"
-                android:textColor="@color/texto"
-                android:textColorHint="@color/texto"
-                android:textColorLink="@color/texto" />
+                android:hint="@string/ano"
+                android:inputType="number"/>
 
             <EditText
                 android:id="@+id/etnDuracao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
+                android:autofillHints=""
                 android:ems="10"
-                android:hint="Duração"
-                android:inputType="numberDecimal"
-                android:textColor="@color/texto"
-                android:textColorHint="@color/texto"
-                android:textColorLink="@color/texto" />
+                android:hint="@string/duracao"
+                android:inputType="numberDecimal"/>
 
             <Button
                 android:id="@+id/btConfirma"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/rosa_claro"
-                android:textColorLink="@color/rosa" />
-
+                android:backgroundTint="?attr/colorSurfaceVariant"/>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
