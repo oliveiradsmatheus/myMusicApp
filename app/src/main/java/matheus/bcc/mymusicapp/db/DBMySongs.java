@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBMySongs extends SQLiteOpenHelper {
-    private static final int VERSAO = 3;
+    private static final int VERSAO = 4;
     public DBMySongs(Context context) {
         super(context, "mysongs.db", null, VERSAO);
     }

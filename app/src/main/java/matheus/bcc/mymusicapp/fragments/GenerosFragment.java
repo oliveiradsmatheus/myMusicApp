@@ -13,13 +13,16 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import matheus.bcc.mymusicapp.MainActivity;
 import matheus.bcc.mymusicapp.R;
 import matheus.bcc.mymusicapp.adapters.GeneroAdapter;
 import matheus.bcc.mymusicapp.db.bean.Genero;
+import matheus.bcc.mymusicapp.db.bean.Musica;
 import matheus.bcc.mymusicapp.db.dal.GeneroDAL;
+import matheus.bcc.mymusicapp.db.dal.MusicaDAL;
 
 public class GenerosFragment extends Fragment {
     private ListView lv_generos;
@@ -59,10 +62,16 @@ public class GenerosFragment extends Fragment {
                     .setTitle("Confirmar Exclusão")
                     .setMessage("Tem certeza que deseja apagar o gênero '" + genero.getNome() + "'?")
                     .setPositiveButton("Sim", (dialog, which) -> {
-                        GeneroDAL dal = new GeneroDAL(view.getContext());
-                        dal.apagar(genero.getId());
-                        carregarGeneros(view);
-                        Toast.makeText(getContext(), "Gênero apagado!", Toast.LENGTH_SHORT).show();
+                        MusicaDAL musicaDAL = new MusicaDAL(view.getContext());
+                        ArrayList<Musica> result = musicaDAL.get("mus_genero = " + genero.getId());
+                        if (!result.isEmpty())
+                            Toast.makeText(getContext(), "Não foi possível apagar o gênero. Existem músicas cadastradas!", Toast.LENGTH_SHORT).show();
+                        else {
+                            GeneroDAL dal = new GeneroDAL(view.getContext());
+                            dal.apagar(genero.getId());
+                            carregarGeneros(view);
+                            Toast.makeText(getContext(), "Gênero apagado!", Toast.LENGTH_SHORT).show();
+                        }
                     })
                     .setNegativeButton("Não", null)
                     .show();

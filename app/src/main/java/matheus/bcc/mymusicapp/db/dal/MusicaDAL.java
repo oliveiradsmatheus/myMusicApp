@@ -61,13 +61,13 @@ public class MusicaDAL {
         return o;
     }
     public ArrayList <Musica> get(String filtro) {
-        GeneroDAL gdal=new GeneroDAL(context);
+        GeneroDAL gdal = new GeneroDAL(context);
         ArrayList <Musica> objs = new ArrayList<>();
-        String sql="select * from "+TABLE;
+        String sql = "select * from " + TABLE;
         if (!filtro.isEmpty())
-            sql+=" where "+filtro;
+            sql += " where " + filtro;
 
-        Cursor cursor=con.consultar(sql);
+        Cursor cursor = con.consultar(sql);
         if(cursor.moveToFirst())
             while (!cursor.isAfterLast()) {
                 objs.add(new Musica(cursor.getInt(0),cursor.getInt(1),
